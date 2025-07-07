@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SmartControl - Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Unified CSS for theme -->
+  <link rel="stylesheet" href="../css/auth.css">
+  <link rel="stylesheet" href="../css/home.css"> <!-- for custom dashboard tweaks below -->
+</head>
+<body>
+  <div class="background"></div>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <div class="dashboard-logo">
+        <span class="logo-icon">⚡</span> SmartControl
+      </div>
+      <button class="logout-btn" id="logoutBtn" title="Logout">⎋</button>
+    </header>
+    <main>
+      <section class="welcome-section" id="welcomeSection">
+        <h1 class="dashboard-title" id="welcomeTitle">Welcome, User!</h1>
+        <p class="dashboard-email" id="welcomeEmail"></p>
+      </section>
+      <section class="device-grid">
+        <div class="device-card light-card">
+          <div class="device-card-icon">💡</div>
+          <div class="device-card-title">Smart Light</div>
+          <div class="device-card-status" id="lightStatus">Status: <span>OFF</span></div>
+          <button class="device-toggle-btn" id="toggleLight">Toggle</button>
+        </div>
+        <div class="device-card fan-card">
+          <div class="device-card-icon">🌀</div>
+          <div class="device-card-title">Smart Fan</div>
+          <div class="device-card-status" id="fanStatus">Status: <span>OFF</span></div>
+          <button class="device-toggle-btn" id="toggleFan">Toggle</button>
+        </div>
+        <!-- Add more device cards here if you want -->
+      </section>
+    </main>
+  </div>
+  <script type="module" src="../js/home.js"></script>
+</body>
+</html>
