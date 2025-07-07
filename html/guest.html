@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartControl - Guest Dashboard</title>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
     <link rel="stylesheet" href="../css/guest.css">
 </head>
 <body>
@@ -20,21 +17,17 @@
                 <span class="brand-name">SmartControl</span>
                 <span class="guest-badge">Guest Mode</span>
             </div>
-            
-            <button class="home-btn" onclick="goToHomepage()">
-                🏠 Back to Home
-            </button>
+            <div>
+                <button class="home-btn" onclick="goToHomepage()">🏠 Home</button>
+                <button class="home-btn" onclick="goToLogin()">🔐 Login</button>
+            </div>
         </div>
     </header>
 
     <!-- Main Dashboard -->
     <main class="main-container">
         <div class="dashboard-header">
-            <h1 class="dashboard-title">Live Dashboard</h1>
-            <div class="status-indicator">
-                <div class="status-dot" id="connectionStatus"></div>
-                <span id="connectionText">Connecting...</span>
-            </div>
+            <h1 class="dashboard-title">Device Dashboard (Preview)</h1>
         </div>
 
         <!-- Device Cards -->
@@ -46,24 +39,22 @@
                         <div class="device-icon">💡</div>
                         <div class="device-name">Smart Light</div>
                     </div>
-                    <div class="device-status" id="lightStatus">
-                        <span class="status-text">OFF</span>
+                    <div class="device-status on">
+                        <span class="status-text">ON</span>
                     </div>
                 </div>
-
                 <div class="device-metrics">
                     <div class="metric">
                         <div class="metric-label">Energy Usage</div>
                         <div class="metric-value">
-                            <span id="lightEnergyValue">0.0</span>
+                            <span id="lightEnergyValue">0.3</span>
                             <span class="metric-unit">kW</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="device-footer">
                     <div class="last-updated">
-                        Last updated: <span id="lightLastUpdate">--</span>
+                        Last updated: <span id="lightLastUpdate">12:03 PM</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +64,7 @@
                 <div class="device-header">
                     <div class="device-icon-container">
                         <div class="device-icon fan-icon">
-                            <div class="fan-blades" id="fanBlades">
+                            <div class="fan-blades spinning">
                                 <div class="blade blade1"></div>
                                 <div class="blade blade2"></div>
                                 <div class="blade blade3"></div>
@@ -82,11 +73,10 @@
                         </div>
                         <div class="device-name">Smart Fan</div>
                     </div>
-                    <div class="device-status" id="fanStatus">
+                    <div class="device-status off">
                         <span class="status-text">OFF</span>
                     </div>
                 </div>
-
                 <div class="device-metrics">
                     <div class="metric">
                         <div class="metric-label">Energy Usage</div>
@@ -95,26 +85,23 @@
                             <span class="metric-unit">kW</span>
                         </div>
                     </div>
-                    
                     <div class="metric">
                         <div class="metric-label">Room Temperature</div>
                         <div class="metric-value">
-                            <span id="fanTempValue">--</span>
+                            <span id="fanTempValue">24</span>
                             <span class="metric-unit">°C</span>
                         </div>
                     </div>
-                    
                     <div class="metric">
                         <div class="metric-label">Speed Level</div>
                         <div class="metric-value">
-                            <span id="fanSpeedValue">--</span>
+                            <span id="fanSpeedValue">Level 1</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="device-footer">
                     <div class="last-updated">
-                        Last updated: <span id="fanLastUpdate">--</span>
+                        Last updated: <span id="fanLastUpdate">12:02 PM</span>
                     </div>
                 </div>
             </div>
@@ -126,26 +113,11 @@
                 <h3>🔒 Limited Access</h3>
             </div>
             <div class="info-content">
-                <p>You're viewing the dashboard in <strong>guest mode</strong>. This gives you real-time access to device status and energy data, but you cannot control the devices.</p>
-                <p>To unlock full control features including device automation, scheduling, and energy savings challenges, please create an account.</p>
-                
-                <div class="info-actions">
-                    <button class="info-btn primary" onclick="goToHomepage()">
-                        🚀 Get Full Access
-                    </button>
-                    <button class="info-btn secondary" onclick="refreshData()">
-                        🔄 Refresh Data
-                    </button>
-                </div>
+                <p>You're viewing the dashboard in <strong>guest mode</strong>. You can see live device stats, but you can't control anything or view personal data.</p>
+                <p>To unlock full features, including device control and history, please <b>login</b> or create an account.</p>
             </div>
         </div>
     </main>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-spinner"></div>
-        <div class="loading-text">Connecting to devices...</div>
-    </div>
 
     <script src="../js/guest.js"></script>
 </body>

@@ -1,5 +1,3 @@
-// /js/home.js
-
 import { auth } from './firebase_config.js';
 import {
   onAuthStateChanged,
@@ -11,7 +9,6 @@ onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = 'auth.html';
   } else {
-    // Display name and email
     document.getElementById('welcomeTitle').textContent =
       `Welcome, ${user.displayName || "User"}!`;
     document.getElementById('welcomeEmail').textContent =
@@ -19,24 +16,54 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// Logout button
+// Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
   await signOut(auth);
   window.location.href = 'index.html';
 });
 
-// DEMO device toggles (you can replace this with your IoT logic!)
+// Device toggles & UI Effects
 const lightStatusSpan = document.querySelector('#lightStatus span');
 const fanStatusSpan = document.querySelector('#fanStatus span');
+const lightStatusDot = document.getElementById('lightStatusDot');
+const fanStatusDot = document.getElementById('fanStatusDot');
+const lightIcon = document.getElementById('lightIcon');
+const fanIcon = document.getElementById('fanIcon');
+
 let lightOn = false, fanOn = false;
+
+function updateLightUI() {
+  lightStatusSpan.textContent = lightOn ? 'ON' : 'OFF';
+  lightStatusSpan.style.color = lightOn ? '#fbbf24' : '';
+  lightStatusDot.className = "status-dot " + (lightOn ? "on" : "off");
+  if (lightOn) {
+    lightIcon.classList.add("on");
+    lightIcon.classList.remove("off");
+  } else {
+    lightIcon.classList.remove("on");
+    lightIcon.classList.add("off");
+  }
+}
+function updateFanUI() {
+  fanStatusSpan.textContent = fanOn ? 'ON' : 'OFF';
+  fanStatusSpan.style.color = fanOn ? '#38bdf8' : '';
+  fanStatusDot.className = "status-dot " + (fanOn ? "on" : "off");
+  if (fanOn) {
+    fanIcon.classList.add("spinning");
+  } else {
+    fanIcon.classList.remove("spinning");
+  }
+}
 
 document.getElementById('toggleLight').addEventListener('click', () => {
   lightOn = !lightOn;
-  lightStatusSpan.textContent = lightOn ? 'ON' : 'OFF';
-  lightStatusSpan.style.color = lightOn ? '#22c55e' : '';
+  updateLightUI();
 });
 document.getElementById('toggleFan').addEventListener('click', () => {
   fanOn = !fanOn;
-  fanStatusSpan.textContent = fanOn ? 'ON' : 'OFF';
-  fanStatusSpan.style.color = fanOn ? '#38bdf8' : '';
+  updateFanUI();
 });
+
+// Initial state
+updateLightUI();
+updateFanUI();

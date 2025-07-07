@@ -272,3 +272,18 @@ body {
     .fan-blades { width: 45px; height: 45px;}
     .blade { width: 15px; height: 26px;}
 }
+/* back button */
+.back-btn {
+    position: absolute;
+    top: 32px; left: 32px;
+    background: rgba(255,255,255,0.08);
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 20;
+    transition: all 0.2s;
+}
