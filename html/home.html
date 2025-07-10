@@ -7,68 +7,79 @@
   <!-- Modern fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap">
-  <link rel="stylesheet" href="../css/auth.css">
   <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
   <div class="background"></div>
-  <div class="dashboard-shell">
-    <header class="dashboard-header">
-      <div class="dashboard-logo">
-        <span class="logo-icon">⚡</span>
-        <span class="logo-text">SmartControl</span>
+  
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <span class="brand-name">SmartControl</span>
       </div>
       <button class="logout-btn" id="logoutBtn" title="Logout">
         <span class="logout-icon">⎋</span>
         <span class="logout-text">Logout</span>
       </button>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <section class="welcome-card" id="welcomeSection">
-        <div class="user-avatar">
-          <span class="user-icon">👤</span>
-        </div>
-        <div>
-          <h1 class="dashboard-title" id="welcomeTitle">Welcome, User!</h1>
-          <p class="dashboard-email" id="welcomeEmail"></p>
-        </div>
-      </section>
+  <!-- Main Container -->
+  <main class="main-container">
+    <!-- Welcome Section -->
+    <section class="welcome-card" id="welcomeSection">
+      <div class="user-avatar">
+        <span class="user-icon">👤</span>
+      </div>
+      <div class="welcome-info">
+        <h1 class="dashboard-title" id="welcomeTitle">Welcome, User!</h1>
+        <p class="dashboard-email" id="welcomeEmail"></p>
+      </div>
+    </section>
 
-      <section class="device-grid">
-        <!-- Light Card -->
-        <div class="device-card light-card">
-          <div class="device-card-header">
-            <div class="device-icon device-light" id="lightIcon">💡</div>
-            <div class="device-label">Smart Light</div>
-          </div>
-          <div class="device-status-row">
-            <span class="status-dot" id="lightStatusDot"></span>
-            <span class="device-card-status" id="lightStatus">Status: <span>OFF</span></span>
-          </div>
-          <button class="device-toggle-btn" id="toggleLight">
-            <span class="toggle-icon">🔄</span> Toggle
-          </button>
+    <!-- Device Grid -->
+    <section class="device-grid">
+      <!-- Light Card -->
+      <div class="device-card light-card">
+        <div class="device-card-header">
+          <div class="device-icon device-light" id="lightIcon">💡</div>
+          <div class="device-label">Smart Light</div>
         </div>
-        <!-- Fan Card -->
-        <div class="device-card fan-card">
-          <div class="device-card-header">
-            <div class="device-icon device-fan" id="fanIcon">
-              <span class="fan-emoji">🌀</span>
+        <div class="device-status-row">
+          <span class="status-dot" id="lightStatusDot"></span>
+          <span class="device-card-status" id="lightStatus">Status: <span>OFF</span></span>
+        </div>
+        <button class="device-toggle-btn" id="toggleLight">
+          <span class="toggle-icon">🔄</span> Toggle
+        </button>
+      </div>
+      
+      <!-- Fan Card -->
+      <div class="device-card fan-card">
+        <div class="device-card-header">
+          <div class="device-icon device-fan" id="fanIcon">
+            <div class="fan-blades">
+              <div class="blade blade1"></div>
+              <div class="blade blade2"></div>
+              <div class="blade blade3"></div>
+              <div class="fan-center"></div>
             </div>
-            <div class="device-label">Smart Fan</div>
           </div>
-          <div class="device-status-row">
-            <span class="status-dot" id="fanStatusDot"></span>
-            <span class="device-card-status" id="fanStatus">Status: <span>OFF</span></span>
-          </div>
-          <button class="device-toggle-btn" id="toggleFan">
-            <span class="toggle-icon">🔄</span> Toggle
-          </button>
+          <div class="device-label">Smart Fan</div>
         </div>
-      </section>
-    </main>
-  </div>
+        <div class="device-status-row">
+          <span class="status-dot" id="fanStatusDot"></span>
+          <span class="device-card-status" id="fanStatus">Status: <span>OFF</span></span>
+        </div>
+        <button class="device-toggle-btn" id="toggleFan">
+          <span class="toggle-icon">🔄</span> Toggle
+        </button>
+      </div>
+    </section>
+  </main>
+  
   <script type="module" src="../js/home.js"></script>
 </body>
 </html>
